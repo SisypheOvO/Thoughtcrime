@@ -28,6 +28,9 @@ namespace StorybrewScripts
             if (StartTime == EndTime)
                 EndTime = (int)AudioDuration;
 
+            if (EndTime <= StartTime || LoopDuration <= 0 || LoopCount <= 0)
+                return;
+
             var random = new System.Random();
             var layer = GetLayer("Particles");
 
@@ -53,15 +56,22 @@ namespace StorybrewScripts
                 var rotation = 3.05 + random.NextDouble() * 0.2;
                 var color = colors[random.Next(colors.Length)];
 
-                // Stagger each particle's start time around StartTime
-                var particleStart = StartTime + random.Next(0, 3000);
+                // Keep particle start inside the valid window so at least one full loop can fit.
+                var maxStagger = Math.Max(0, Math.Min(3000, EndTime - StartTime - LoopDuration));
+                var particleStart = StartTime + random.Next(0, maxStagger + 1);
+
+                // Clamp loop count so particle timeline never goes past EndTime.
+                var maxLoopsByTime = (EndTime - particleStart) / LoopDuration;
+                var effectiveLoopCount = Math.Min(LoopCount, maxLoopsByTime);
+                if (effectiveLoopCount <= 0)
+                    continue;
 
                 var sprite = layer.CreateSprite(ParticlePath, OsbOrigin.BottomCentre);
                 sprite.Scale(particleStart, Scale);
                 sprite.Rotate(particleStart, rotation);
                 sprite.Color(particleStart, color);
 
-                sprite.StartLoopGroup(particleStart, LoopCount);
+                sprite.StartLoopGroup(particleStart, effectiveLoopCount);
                 sprite.Fade(OsbEasing.InSine, 0, LoopDuration / 5, 0, Opacity);
                 sprite.Move(0, LoopDuration, startX, startY, endX, endY);
                 sprite.Fade(OsbEasing.Out, LoopDuration * 4 / 5, LoopDuration, Opacity, 0);

@@ -4,6 +4,7 @@ using StorybrewCommon.Mapset;
 using StorybrewCommon.Scripting;
 using StorybrewCommon.Storyboarding;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace StorybrewScripts
@@ -26,10 +27,46 @@ namespace StorybrewScripts
         [Description("Color intensity multiplier (0~1). Lower values reduce the chance of turning white")]
         [Configurable] public double ColorIntensity = 0.4;
 
+        [Group("Bookmark Segments")]
+        [Description("Control glow by bookmark segments using a 0/1 string, e.g. 1010101. 1=enable, 0=disable.")]
+        [Configurable] public string SegmentMask = "01000100000011";
+
         public override void Generate()
         {
             if (StartTime == EndTime)
                 EndTime = (int)(Beatmap.HitObjects.LastOrDefault()?.EndTime ?? AudioDuration);
+
+            var songEnd = (int)(Beatmap.HitObjects.LastOrDefault()?.EndTime ?? AudioDuration);
+            var mask = new string((SegmentMask ?? string.Empty).Where(c => c == '0' || c == '1').ToArray());
+            var bookmarks = Beatmap.Bookmarks.OrderBy(b => b).ToArray();
+            var enabledRanges = new List<Tuple<int, int>>();
+
+            if (bookmarks.Length == 0 || mask.Length == 0)
+            {
+                Log("No bookmarks available or SegmentMask is empty; HitObjectGlow applies for the full duration.");
+                enabledRanges.Add(Tuple.Create(StartTime, EndTime));
+            }
+            else
+            {
+                var count = System.Math.Min(mask.Length, bookmarks.Length);
+                for (int i = 0; i < count; i++)
+                {
+                    if (mask[i] != '1') continue;
+
+                    var runStartIndex = i;
+                    while (i + 1 < count && mask[i + 1] == '1') i++;
+                    var runEndIndex = i;
+
+                    var segmentStart = (int)bookmarks[runStartIndex];
+                    var segmentEnd = (runEndIndex + 1 < bookmarks.Length) ? (int)bookmarks[runEndIndex + 1] : songEnd;
+
+                    var start = System.Math.Max(segmentStart, StartTime);
+                    var end = System.Math.Min(segmentEnd, EndTime);
+                    if (end <= start) continue;
+
+                    enabledRanges.Add(Tuple.Create(start, end));
+                }
+            }
 
             var colors = new[]
             {
@@ -47,6 +84,10 @@ namespace StorybrewScripts
             foreach (var hitObject in Beatmap.HitObjects)
             {
                 if (hitObject.StartTime < StartTime || hitObject.StartTime > EndTime)
+                    continue;
+
+                var inEnabledRange = enabledRanges.Any(r => hitObject.StartTime >= r.Item1 && hitObject.StartTime < r.Item2);
+                if (!inEnabledRange)
                     continue;
 
                 var c = colors[colorIndex % colors.Length];

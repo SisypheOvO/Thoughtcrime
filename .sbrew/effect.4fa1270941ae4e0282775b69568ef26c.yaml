@@ -38,7 +38,7 @@ Config:
     Type: "System.String"
     Value: "Sisyphe"
     DisplayName: "Name 0"
-    BeginsGroup: "Names (按 Bookmark 顺序，每段一个文件名)"
+    BeginsGroup: "Names (one file name per bookmark segment)"
   Name1:
     Type: "System.String"
     Value: "Mimosa_M"

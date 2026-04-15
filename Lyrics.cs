@@ -20,7 +20,7 @@ namespace StorybrewScripts
     {
         [Description("Path to a .sbv, .srt, .ass or .ssa file in your project's folder.\nThese can be made with a tool like aegisub.")]
         [Configurable] public string LyricsSRTPath = "assets/lrc/lyrics.srt";
-        [Configurable] public float OffsetY = 400;
+        [Configurable] public float OffsetY = 90;
         [Configurable] public float OffsetX = 0;
 
         [Group("Font")]
@@ -55,7 +55,9 @@ namespace StorybrewScripts
         [Description("How much extra space is allocated around the text when generating it.\nShould be increased when characters look cut off.")]
         [Configurable] public Vector2 Padding = Vector2.Zero;
         [Configurable] public OsbOrigin Origin = OsbOrigin.Centre;
-        [Configurable] public LyricsAlignment Alignment = LyricsAlignment.Center;
+        [Configurable] public LyricsAlignment Alignment = LyricsAlignment.Right;
+        [Configurable] public int FadeIn = 200;
+        [Configurable] public int FadeOut = 500;
 
         public override void Generate()
         {
@@ -135,9 +137,9 @@ namespace StorybrewScripts
 
                 var sprite = layer.CreateSprite(texture.Path, Origin, position);
                 sprite.Scale(line.StartTime, FontScale);
-                sprite.Fade(line.StartTime - 200, line.StartTime, 0, 1);
-                sprite.Fade(line.EndTime - 400, line.EndTime, 1, 0);
-                if (additive) sprite.Additive(line.StartTime - 200, line.EndTime);
+                sprite.Fade(line.StartTime - FadeIn, line.StartTime, 0, 1);
+                sprite.Fade(line.EndTime - FadeOut, line.EndTime, 1, 0);
+                if (additive) sprite.Additive(line.StartTime - FadeIn, line.EndTime);
             }
         }
 
@@ -177,9 +179,9 @@ namespace StorybrewScripts
 
                             var sprite = layer.CreateSprite(texture.Path, Origin, position);
                             sprite.Scale(subtitleLine.StartTime, FontScale);
-                            sprite.Fade(subtitleLine.StartTime - 200, subtitleLine.StartTime, 0, 1);
-                            sprite.Fade(subtitleLine.EndTime - 200, subtitleLine.EndTime, 1, 0);
-                            if (additive) sprite.Additive(subtitleLine.StartTime - 200, subtitleLine.EndTime);
+                            sprite.Fade(subtitleLine.StartTime - FadeIn, subtitleLine.StartTime, 0, 1);
+                            sprite.Fade(subtitleLine.EndTime - FadeOut, subtitleLine.EndTime, 1, 0);
+                            if (additive) sprite.Additive(subtitleLine.StartTime - FadeIn, subtitleLine.EndTime);
                         }
                         letterX += texture.BaseWidth * FontScale;
                     }

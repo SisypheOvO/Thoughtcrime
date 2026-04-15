@@ -113,6 +113,14 @@ Config:
       Left: "0"
       Center: "1"
       Right: "2"
+  FadeIn:
+    Type: "System.Int32"
+    Value: "200"
+    DisplayName: "Fade In"
+  FadeOut:
+    Type: "System.Int32"
+    Value: "500"
+    DisplayName: "Fade Out"
   RandomSeed:
     Type: "System.Int32"
     Value: "0"

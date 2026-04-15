@@ -1,0 +1,55 @@
+﻿FormatVersion: 7
+Name: "Overlay 1"
+Script: "Overlay"
+Multithreaded: No
+Config:
+  StartTime:
+    Type: "System.Int32"
+    Value: "0"
+    DisplayName: "Start Time"
+    BeginsGroup: "Timing"
+  EndTime:
+    Type: "System.Int32"
+    Value: "0"
+    DisplayName: "End Time"
+  VignettePath:
+    Type: "System.String"
+    Value: "sb/Vignette.png"
+    DisplayName: "Vignette Path"
+    BeginsGroup: "Vignette"
+  VignetteOpacity:
+    Type: "System.Double"
+    Value: "1"
+    DisplayName: "Vignette Opacity"
+  BlackStart:
+    Type: "System.Int32"
+    Value: "0"
+    DisplayName: "Black Start"
+    BeginsGroup: "Black Transition"
+  BlackEnd:
+    Type: "System.Int32"
+    Value: "0"
+    DisplayName: "Black End"
+  PixelPath:
+    Type: "System.String"
+    Value: "sb/Pixel.jpg"
+    DisplayName: "Pixel Path"
+  BlackFadeIn:
+    Type: "System.Int32"
+    Value: "1000"
+    DisplayName: "Black Fade In"
+  BlackFadeOut:
+    Type: "System.Int32"
+    Value: "1000"
+    DisplayName: "Black Fade Out"
+  RandomSeed:
+    Type: "System.Int32"
+    Value: "0"
+    DisplayName: "Random Seed"
+    BeginsGroup: "Common"
+Layers:
+  82301d65bd664e94b886d6c4b9533019:
+    Name: "Vignette"
+    OsbLayer: Background
+    DiffSpecific: No
+    Visible: Yes

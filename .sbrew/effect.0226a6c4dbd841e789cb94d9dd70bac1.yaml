@@ -1,0 +1,50 @@
+﻿FormatVersion: 7
+Name: "HitObjectGlow 1"
+Script: "HitObjectGlow"
+Multithreaded: No
+Config:
+  StartTime:
+    Type: "System.Int32"
+    Value: "0"
+    DisplayName: "Start Time"
+    BeginsGroup: "Timing"
+  EndTime:
+    Type: "System.Int32"
+    Value: "0"
+    DisplayName: "End Time"
+  GlowPath:
+    Type: "System.String"
+    Value: "sb/glow.png"
+    DisplayName: "Glow Path"
+    BeginsGroup: "Glow Settings"
+  StartScale:
+    Type: "System.Double"
+    Value: "0.8"
+    DisplayName: "Start Scale"
+  EndScale:
+    Type: "System.Double"
+    Value: "0.16"
+    DisplayName: "End Scale"
+  FadeDuration:
+    Type: "System.Int32"
+    Value: "300"
+    DisplayName: "Fade Duration"
+  StartOpacity:
+    Type: "System.Double"
+    Value: "1"
+    DisplayName: "Start Opacity"
+  ColorIntensity:
+    Type: "System.Double"
+    Value: "0.5"
+    DisplayName: "Color Intensity"
+  RandomSeed:
+    Type: "System.Int32"
+    Value: "0"
+    DisplayName: "Random Seed"
+    BeginsGroup: "Common"
+Layers:
+  ea4fdba09d6643d8b5dffa3651998017:
+    Name: "HitGlow"
+    OsbLayer: Background
+    DiffSpecific: No
+    Visible: Yes

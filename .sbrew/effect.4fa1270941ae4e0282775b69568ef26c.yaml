@@ -1,0 +1,112 @@
+﻿FormatVersion: 7
+Name: "Credits 1"
+Script: "Credits"
+Multithreaded: No
+Config:
+  Folder:
+    Type: "System.String"
+    Value: "sb/fonts/"
+    BeginsGroup: "Settings"
+  Scale:
+    Type: "System.Double"
+    Value: "0.2"
+  OffsetX:
+    Type: "System.Double"
+    Value: "40"
+    DisplayName: "Offset X"
+  YVisible:
+    Type: "System.Double"
+    Value: "425"
+    DisplayName: "Y Visible"
+  YHidden:
+    Type: "System.Double"
+    Value: "445"
+    DisplayName: "Y Hidden"
+  MaxOpacity:
+    Type: "System.Double"
+    Value: "0.9"
+    DisplayName: "Max Opacity"
+  FadeDuration:
+    Type: "System.Int32"
+    Value: "300"
+    DisplayName: "Fade Duration"
+  SlideDuration:
+    Type: "System.Int32"
+    Value: "600"
+    DisplayName: "Slide Duration"
+  Name0:
+    Type: "System.String"
+    Value: "Sisyphe"
+    DisplayName: "Name 0"
+    BeginsGroup: "Names (按 Bookmark 顺序，每段一个文件名)"
+  Name1:
+    Type: "System.String"
+    Value: "Mimosa_M"
+    DisplayName: "Name 1"
+  Name2:
+    Type: "System.String"
+    Value: "Sisyphe"
+    DisplayName: "Name 2"
+  Name3:
+    Type: "System.String"
+    Value: "Mimosa_M"
+    DisplayName: "Name 3"
+  Name4:
+    Type: "System.String"
+    Value: "Robinia"
+    DisplayName: "Name 4"
+  Name5:
+    Type: "System.String"
+    Value: "Sisyphe"
+    DisplayName: "Name 5"
+  Name6:
+    Type: "System.String"
+    Value: "Mimosa_M"
+    DisplayName: "Name 6"
+  Name7:
+    Type: "System.String"
+    Value: "Robinia"
+    DisplayName: "Name 7"
+  Name8:
+    Type: "System.String"
+    Value: "Sisyphe"
+    DisplayName: "Name 8"
+  Name9:
+    Type: "System.String"
+    Value: "Mimosa_M"
+    DisplayName: "Name 9"
+  Name10:
+    Type: "System.String"
+    Value: "Robinia"
+    DisplayName: "Name 10"
+  Name11:
+    Type: "System.String"
+    Value: "Sisyphe"
+    DisplayName: "Name 11"
+  Name12:
+    Type: "System.String"
+    Value: "Mimosa_M"
+    DisplayName: "Name 12"
+  Name13:
+    Type: "System.String"
+    Value: "Sisyphe"
+    DisplayName: "Name 13"
+  Name14:
+    Type: "System.String"
+    Value: ""
+    DisplayName: "Name 14"
+  Name15:
+    Type: "System.String"
+    Value: ""
+    DisplayName: "Name 15"
+  RandomSeed:
+    Type: "System.Int32"
+    Value: "0"
+    DisplayName: "Random Seed"
+    BeginsGroup: "Common"
+Layers:
+  0c14e912b8534474bc8ab61329bcdb1c:
+    Name: "Credits"
+    OsbLayer: Background
+    DiffSpecific: No
+    Visible: Yes

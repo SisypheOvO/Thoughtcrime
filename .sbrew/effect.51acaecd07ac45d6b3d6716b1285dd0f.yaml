@@ -1,0 +1,48 @@
+﻿FormatVersion: 7
+Name: "FloatingParticles 1"
+Script: "FloatingParticles"
+Multithreaded: No
+Config:
+  StartTime:
+    Type: "System.Int32"
+    Value: "0"
+    DisplayName: "Start Time"
+    BeginsGroup: "Timing"
+  EndTime:
+    Type: "System.Int32"
+    Value: "0"
+    DisplayName: "End Time"
+  ParticlePath:
+    Type: "System.String"
+    Value: "sb/circle.png"
+    DisplayName: "Particle Path"
+    BeginsGroup: "Particle Settings"
+  ParticleCount:
+    Type: "System.Int32"
+    Value: "10"
+    DisplayName: "Particle Count"
+  Scale:
+    Type: "System.Double"
+    Value: "0.1"
+  Opacity:
+    Type: "System.Double"
+    Value: "0.1"
+  LoopCount:
+    Type: "System.Int32"
+    Value: "80"
+    DisplayName: "Loop Count"
+  LoopDuration:
+    Type: "System.Int32"
+    Value: "5050"
+    DisplayName: "Loop Duration"
+  RandomSeed:
+    Type: "System.Int32"
+    Value: "0"
+    DisplayName: "Random Seed"
+    BeginsGroup: "Common"
+Layers:
+  378a789d88a942bcbd8df0f55dd66068:
+    Name: "Particles"
+    OsbLayer: Background
+    DiffSpecific: No
+    Visible: Yes

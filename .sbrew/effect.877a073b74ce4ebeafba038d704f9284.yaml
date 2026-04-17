@@ -20,6 +20,23 @@ Config:
   Opacity:
     Type: "System.Double"
     Value: "0.9"
+  SegmentMask:
+    Type: "System.String"
+    Value: "10111011111100"
+    DisplayName: "Segment Mask"
+    BeginsGroup: "Bookmark Segments"
+  OpacityWhen0:
+    Type: "System.Double"
+    Value: "1"
+    DisplayName: "Opacity When 0"
+  SegmentFadeIn:
+    Type: "System.Int32"
+    Value: "400"
+    DisplayName: "Segment Fade In"
+  SegmentFadeOut:
+    Type: "System.Int32"
+    Value: "75"
+    DisplayName: "Segment Fade Out"
   RandomSeed:
     Type: "System.Int32"
     Value: "0"

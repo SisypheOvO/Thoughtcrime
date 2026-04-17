@@ -26,11 +26,11 @@ Config:
     DisplayName: "Sprites Path"
   FontSize:
     Type: "System.Int32"
-    Value: "26"
+    Value: "52"
     DisplayName: "Font Size"
   FontScale:
     Type: "System.Single"
-    Value: "0.5"
+    Value: "0.25"
     DisplayName: "Font Scale"
   FontColor:
     Type: "OpenTK.Graphics.Color4"

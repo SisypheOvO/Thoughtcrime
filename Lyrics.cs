@@ -29,9 +29,9 @@ namespace StorybrewScripts
         [Description("A path inside your mapset's folder where lyrics images will be generated.")]
         [Configurable] public string SpritesPath = "sb/fonts/lyric-fonts";
         [Description("The Size of the font.\nIncreasing the font size creates larger images.")]
-        [Configurable] public int FontSize = 26;
+        [Configurable] public int FontSize = 52;
         [Description("The Scale of the font.\nIncreasing the font scale does not creates larger images, but the result may be blurrier.")]
-        [Configurable] public float FontScale = 0.4f;
+        [Configurable] public float FontScale = 0.25f;
         [Configurable] public Color4 FontColor = Color4.White;
         [Configurable] public FontStyle FontStyle = FontStyle.Regular;
 

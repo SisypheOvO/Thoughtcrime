@@ -19,7 +19,7 @@ namespace StorybrewScripts
 
         [Group("Bookmark Segments")]
         [Description("Control background opacity by bookmark segments using a 0/1 string, e.g. 1010101. 1=dim, 0=normal.")]
-        [Configurable] public string SegmentMask = "10111011111100";
+        [Configurable] public string SegmentMask = "10110011011100";
         [Configurable] public double OpacityWhen0 = 1;
         [Configurable] public int SegmentFadeIn = 400;
         [Configurable] public int SegmentFadeOut = 75;

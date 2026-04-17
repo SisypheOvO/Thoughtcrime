@@ -44,7 +44,7 @@ Config:
     DisplayName: "Black Fade Out"
   SegmentMask:
     Type: "System.String"
-    Value: "10111011111100"
+    Value: "10110011011100"
     DisplayName: "Segment Mask"
     BeginsGroup: "Bookmark Segments"
   SegmentFadeIn:

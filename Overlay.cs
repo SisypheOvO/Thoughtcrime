@@ -27,7 +27,7 @@ namespace StorybrewScripts
 
         [Group("Bookmark Segments")]
         [Description("Control vignette visibility by bookmark segments using a 0/1 string, e.g. 1010101. 1=show, 0=hide.")]
-        [Configurable] public string SegmentMask = "10111011111100";
+        [Configurable] public string SegmentMask = "10110011011100";
         [Configurable] public int SegmentFadeIn = 400;
         [Configurable] public int SegmentFadeOut = 75;
 

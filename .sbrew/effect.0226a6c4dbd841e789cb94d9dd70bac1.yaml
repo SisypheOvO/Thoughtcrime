@@ -47,7 +47,7 @@ Config:
     DisplayName: "Slider Max Steps"
   SegmentMask:
     Type: "System.String"
-    Value: "01000100000011"
+    Value: "01001100100011"
     DisplayName: "Segment Mask"
     BeginsGroup: "Bookmark Segments"
   RandomSeed:

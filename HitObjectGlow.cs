@@ -33,7 +33,7 @@ namespace StorybrewScripts
 
         [Group("Bookmark Segments")]
         [Description("Control glow by bookmark segments using a 0/1 string, e.g. 1010101. 1=enable, 0=disable.")]
-        [Configurable] public string SegmentMask = "01000100000011";
+        [Configurable] public string SegmentMask = "01001100100011";
 
         public override void Generate()
         {

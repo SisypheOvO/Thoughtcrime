@@ -22,7 +22,7 @@ namespace StorybrewScripts
         [Configurable] public string GlowPath = "sb/glow.png";
         [Configurable] public double StartScale = 0.6;
         [Configurable] public double EndScale = 0.16;
-        [Configurable] public int FadeDuration = 800;
+        [Configurable] public int FadeDuration = 300;
         [Configurable] public double StartOpacity = 0.7;
         [Description("Color intensity multiplier (0~1). Lower values reduce the chance of turning white")]
         [Configurable] public double ColorIntensity = 0.4;

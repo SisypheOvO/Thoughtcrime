@@ -31,11 +31,11 @@ Config:
     DisplayName: "Fade Duration"
   StartOpacity:
     Type: "System.Double"
-    Value: "1"
+    Value: "0.5"
     DisplayName: "Start Opacity"
   ColorIntensity:
     Type: "System.Double"
-    Value: "0.5"
+    Value: "0.4"
     DisplayName: "Color Intensity"
   SegmentMask:
     Type: "System.String"

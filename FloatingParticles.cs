@@ -17,9 +17,9 @@ namespace StorybrewScripts
 
         [Group("Particle Settings")]
         [Configurable] public string ParticlePath = "sb/circle.png";
-        [Configurable] public int ParticleCount = 15;
+        [Configurable] public int ParticleCount = 10;
         [Configurable] public double Scale = 0.1;
-        [Configurable] public double Opacity = 0.3;
+        [Configurable] public double Opacity = 0.1;
         [Configurable] public int LoopCount = 80;
         [Configurable] public int LoopDuration = 5050;
 

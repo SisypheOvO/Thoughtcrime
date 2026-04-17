@@ -26,6 +26,10 @@ namespace StorybrewScripts
         [Configurable] public double StartOpacity = 0.7;
         [Description("Color intensity multiplier (0~1). Lower values reduce the chance of turning white")]
         [Configurable] public double ColorIntensity = 0.4;
+        [Description("Slider path sampling interval in ms. Lower is smoother but heavier.")]
+        [Configurable] public int SliderSampleMs = 50;
+        [Description("Maximum move segments generated per slider glow.")]
+        [Configurable] public int SliderMaxSteps = 24;
 
         [Group("Bookmark Segments")]
         [Description("Control glow by bookmark segments using a 0/1 string, e.g. 1010101. 1=enable, 0=disable.")]
@@ -78,23 +82,31 @@ namespace StorybrewScripts
 
             // Lower color intensity to avoid turning white after additive blending
             float ci = (float)Math.Max(0, Math.Min(1, ColorIntensity));
+            var sliderSampleMs = Math.Max(1, SliderSampleMs);
+            var sliderMaxSteps = Math.Max(2, SliderMaxSteps);
 
             int colorIndex = 0;
+            int rangeIndex = 0;
+            var layer = GetLayer("HitGlow");
 
             foreach (var hitObject in Beatmap.HitObjects)
             {
                 if (hitObject.StartTime < StartTime || hitObject.StartTime > EndTime)
                     continue;
 
-                var inEnabledRange = enabledRanges.Any(r => hitObject.StartTime >= r.Item1 && hitObject.StartTime < r.Item2);
+                var hitTime = (int)hitObject.StartTime;
+                while (rangeIndex < enabledRanges.Count && hitTime >= enabledRanges[rangeIndex].Item2)
+                    rangeIndex++;
+
+                var inEnabledRange = rangeIndex < enabledRanges.Count
+                    && hitTime >= enabledRanges[rangeIndex].Item1
+                    && hitTime < enabledRanges[rangeIndex].Item2;
                 if (!inEnabledRange)
                     continue;
 
                 var c = colors[colorIndex % colors.Length];
                 var color = new Color4((byte)(c.R * 255 * ci), (byte)(c.G * 255 * ci), (byte)(c.B * 255 * ci), 255);
                 colorIndex++;
-
-                var layer = GetLayer("HitGlow");
 
                 if (hitObject is OsuSlider slider)
                 {
@@ -110,7 +122,7 @@ namespace StorybrewScripts
                     sprite.Additive(startTime, startTime + FadeDuration + duration);
 
                     // Move along the slider path
-                    var stepCount = Math.Max(2, duration / 50);
+                    var stepCount = Math.Max(2, Math.Min(sliderMaxSteps, duration / sliderSampleMs));
                     for (int i = 0; i < stepCount; i++)
                     {
                         var t0 = (double)i / stepCount;

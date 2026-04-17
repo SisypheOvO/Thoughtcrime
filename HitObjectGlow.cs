@@ -37,7 +37,7 @@ namespace StorybrewScripts
                 EndTime = (int)(Beatmap.HitObjects.LastOrDefault()?.EndTime ?? AudioDuration);
 
             var songEnd = (int)(Beatmap.HitObjects.LastOrDefault()?.EndTime ?? AudioDuration);
-            var mask = new string((SegmentMask ?? string.Empty).Where(c => c == '0' || c == '1').ToArray());
+            var mask = new string([.. (SegmentMask ?? string.Empty).Where(c => c == '0' || c == '1')]);
             var bookmarks = Beatmap.Bookmarks.OrderBy(b => b).ToArray();
             var enabledRanges = new List<Tuple<int, int>>();
 

@@ -39,9 +39,8 @@ namespace StorybrewScripts
             var vignetteLayer = GetLayer("Vignette");
             var bitmap = GetMapsetBitmap(VignettePath);
             var vignetteScale = 480.0f / bitmap.Height;
-            var songEnd = (int)(Beatmap.HitObjects.LastOrDefault()?.EndTime ?? AudioDuration);
 
-            var mask = new string((SegmentMask ?? string.Empty).Where(c => c == '0' || c == '1').ToArray());
+            var mask = new string([.. (SegmentMask ?? string.Empty).Where(c => c == '0' || c == '1')]);
             var bookmarks = Beatmap.Bookmarks.OrderBy(b => b).ToArray();
 
             if (bookmarks.Length == 0 || mask.Length == 0)
@@ -57,6 +56,7 @@ namespace StorybrewScripts
                 var count = System.Math.Min(mask.Length, bookmarks.Length);
                 var fadeIn = System.Math.Max(0, SegmentFadeIn);
                 var fadeOut = System.Math.Max(0, SegmentFadeOut);
+                var songEnd = (int)(Beatmap.HitObjects.LastOrDefault()?.EndTime ?? AudioDuration);
 
                 for (int i = 0; i < count; i++)
                 {
